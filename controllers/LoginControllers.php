@@ -2,7 +2,7 @@
 namespace Controllers;
 
 use MVC\Router;
-use Classes\Email;
+use Classes\Emails;
 use Model\Usuario;
 
 class LoginControllers{
@@ -63,7 +63,7 @@ class LoginControllers{
                     unset($usuario->password2);
                     $usuario->generarToken();
                     $resultado = $usuario->guardar();
-                    $email = new Email($usuario->email, $usuario->nombre, $usuario->token);
+                    $email = new Emails($usuario->email, $usuario->nombre, $usuario->token);
                     $resultado2 = $email->enviarConfirmacion();
                     if($resultado && $resultado2){
                         header('Location: /mensaje');
@@ -90,7 +90,7 @@ class LoginControllers{
                 if($usuario && $usuario->confirmado == "1"){
                     $usuario->generarToken();
                     $resultado = $usuario->guardar();
-                    $email = new Email($usuario->email, $usuario->nombre, $usuario->token);
+                    $email = new Emails($usuario->email, $usuario->nombre, $usuario->token);
                     $resultado2 = $email->enviarInstrucciones();
                     if($resultado && $resultado2){
                         Usuario::setAlerta('exito', 'Hemos enviado las instrucciones a tu email');
