@@ -45,6 +45,7 @@ class DashboardControllers{
         
         //Verifica si hay una URL 
         $token = $_GET['url'];
+        debuguear($token);
         if(!$token){
             header('Location: /dashboard');
         } 
