@@ -3,18 +3,18 @@ namespace Model;
 
 class Proyecto extends ActiveRecord{
     protected static $tabla = 'proyectos';
-    protected static $columnasDB = ['id', 'nombre', 'url', 'propietarioID'];
+    protected static $columnasDB = ['id', 'nombre', 'url', 'propietarioId'];
 
     public $id;
     public $nombre;
     public $url;
-    public $propietarioID;
+    public $propietarioId;
 
     public function __construct($args = []) {
         $this->id = $args['id'] ?? null;
         $this->nombre = $args['nombre'] ?? '';
         $this->url = $args['url'] ?? '';
-        $this->propietarioID = $args['propietarioID'] ?? '';
+        $this->propietarioId = $args['propietarioId'] ?? '';
     }
 
     public function validarProyecto(){

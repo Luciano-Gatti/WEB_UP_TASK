@@ -134,11 +134,11 @@
 
     async function eliminarTarea(tarea) {
         const datos = new FormData();
-        const {id, nombre, estado, proyectoID} = tarea;
+        const {id, nombre, estado, proyectoId} = tarea;
         datos.append('id', id);
         datos.append('nombre', nombre);
         datos.append('estado', estado);
-        datos.append('proyectoID', proyectoID);
+        datos.append('proyectoId', proyectoId);
         datos.append('url', obtenerProyecto());
         try {
             const url = '/api/tarea/eliminar';
@@ -247,7 +247,7 @@
                     id: String(resultado.id),
                     nombre: tarea,
                     estado: "0",
-                    proyectoID: resultado.proyectoID                    
+                    proyectoId: resultado.proyectoId                    
                 };
                 tareas = [...tareas, tareaObj];
                 mostrarTareas();
@@ -264,12 +264,12 @@
     }
 
     async function actualizarTarea(tarea){
-        const {estado, id, nombre, proyectoID} = tarea;
+        const {estado, id, nombre, proyectoId} = tarea;
         const datos = new FormData();
         datos.append('id', id);
         datos.append('nombre', nombre);
         datos.append('estado', estado);
-        datos.append('proyectoID', proyectoID);
+        datos.append('proyectoId', proyectoId);
         datos.append('url', obtenerProyecto());
         try {
             const url = '/api/tarea/actualizar';

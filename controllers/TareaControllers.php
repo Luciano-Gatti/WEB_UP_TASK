@@ -12,10 +12,10 @@ class TareaControllers{
             header('Location: /dashboard');
         } 
         $proyecto = Proyecto::where('url', $proyectoURL);
-        if(!$proyecto || $proyecto->propietarioID !== $_SESSION['id']){
+        if(!$proyecto || $proyecto->propietarioId !== $_SESSION['id']){
             header('Location: /dashboard');
         }  
-        $tareas = Tarea::belongsTo('proyectoID', $proyecto->id);
+        $tareas = Tarea::belongsTo('proyectoId', $proyecto->id);
         echo json_encode(['tareas'=>$tareas]);
     }   
 
@@ -24,7 +24,7 @@ class TareaControllers{
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $url = $_POST['url'];
             $proyecto = Proyecto::where('url', $url);
-            if(!$proyecto || $proyecto->propietarioID !== $_SESSION['id']){
+            if(!$proyecto || $proyecto->propietarioId !== $_SESSION['id']){
                 $respuesta = [
                     'tipo'=>'error',
                     'mensaje'=>'Hubo un error al agregar la tarea'
@@ -33,13 +33,13 @@ class TareaControllers{
                 return;
             }
             $tarea = new Tarea($_POST);
-            $tarea->proyectoID = $proyecto->id;
+            $tarea->proyectoId = $proyecto->id;
             $resultado = $tarea->guardar();
             $respuesta = [
                 'tipo'=>'exito',
                 'id'=> $resultado['id'],
                 'mensaje'=>'La terea se ha creado correctamente',
-                'proyectoID'=>$proyecto->id
+                'proyectoId'=>$proyecto->id
             ];
             echo json_encode($respuesta);
         }
@@ -49,7 +49,7 @@ class TareaControllers{
         session_start();
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $proyecto = Proyecto::where('url', $_POST['url']);
-            if(!$proyecto || $proyecto->propietarioID !== $_SESSION['id']){
+            if(!$proyecto || $proyecto->propietarioId !== $_SESSION['id']){
                 $respuesta = [
                     'tipo'=>'error',
                     'mensaje'=>'Hubo un error al actualizar la tarea'
@@ -63,7 +63,7 @@ class TareaControllers{
                 $respuesta = [
                     'tipo'=>'exito',
                     'id'=> $tarea->id,
-                    'proyectoID'=>$proyecto->id,
+                    'proyectoId'=>$proyecto->id,
                     'mensaje'=>'Actualizado correctamente'
                 ];
             }
@@ -75,7 +75,7 @@ class TareaControllers{
         session_start();
         if($_SERVER['REQUEST_METHOD'] === 'POST'){     
             $proyecto = Proyecto::where('url', $_POST['url']);
-            if(!$proyecto || $proyecto->propietarioID !== $_SESSION['id']){
+            if(!$proyecto || $proyecto->propietarioId !== $_SESSION['id']){
                 $respuesta = [
                     'tipo'=>'error',
                     'mensaje'=>'Hubo un error al actualizar la tarea'
