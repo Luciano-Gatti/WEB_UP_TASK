@@ -9,7 +9,7 @@ class DashboardControllers{
         session_start();
         isAuth();
         $id = $_SESSION['id'];
-        $proyectos = Proyecto::belongsTo('usuarioID', $id);
+        $proyectos = Proyecto::belongsTo('propietarioID', $id);
 
         $router->render('dashboard/index', [
             'titulo'=>'Proyectos',
@@ -27,7 +27,7 @@ class DashboardControllers{
             $alertas = $proyecto->validarProyecto();
             if(empty($alertas)){
                 $proyecto->url = md5(uniqid());
-                $proyecto->usuarioID = $_SESSION['id'];
+                $proyecto->propietarioID = $_SESSION['id'];
                 $proyecto->guardar();
                 header('Location: /proyecto?url=' .$proyecto->url);
             }
@@ -51,7 +51,7 @@ class DashboardControllers{
         $proyecto = Proyecto::where('url', $token);
 
         //Verifica si el usuario tiene acceso a ese proyecto
-        if($proyecto->usuarioID !== $_SESSION['id']) header('Location: /dashboard');
+        if($proyecto->propietarioID !== $_SESSION['id']) header('Location: /dashboard');
 
         $titulo = $proyecto->nombre ?? '';//Guarda el nombre del proyecto
 
