@@ -50,7 +50,13 @@ class Emails {
         ->html($contenido);
 
         // Enviar el mensaje
-        $mailer->send($email);
+        try {
+            $mailer->send($email);
+            return true;
+        } catch (\Throwable $th) {
+            return false;
+        }
+        
     }
 
     public function enviarInstrucciones(){
