@@ -26,7 +26,7 @@
     async function obtenerTareas(){
         try {
             const serial = obtenerProyecto();
-            const url = `/api/tarea?url=${serial}`;
+            const url = `${origin}/api/tarea?url=${serial}`;
             const respuesta = await fetch(url);
             const resultado = await respuesta.json();
             tareas = resultado.tareas;
@@ -141,7 +141,7 @@
         datos.append('proyectoId', proyectoId);
         datos.append('url', obtenerProyecto());
         try {
-            const url = '/api/tarea/eliminar';
+            const url = `${origin}/api/tarea/eliminar`;
             const respuesta = await fetch(url, {
                 method: 'POST',
                 body: datos
@@ -231,7 +231,7 @@
         datos.append('url', obtenerProyecto());
 
         try {
-            const url = `/api/tarea`;
+            const url = `${origin}/api/tarea`;
             const respuesta = await fetch(url, {
                 method: 'POST',
                 body: datos
@@ -272,7 +272,7 @@
         datos.append('proyectoId', proyectoId);
         datos.append('url', obtenerProyecto());
         try {
-            const url = '/api/tarea/actualizar';
+            const url = `${origin}/api/tarea/actualizar`;
             const respuesta = await fetch(url, {
                 method: 'POST',
                 body: datos
