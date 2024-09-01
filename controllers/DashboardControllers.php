@@ -52,10 +52,6 @@ class DashboardControllers{
         //Identifica el proyecto al que pertenece esa URL
         $proyecto = Proyecto::where('url', $token);
 
-        debuguear([
-            'propietarioId'=>$proyecto->propietarioId,
-            'sessionID'=>$_SESSION['id']
-        ]);
         //Verifica si el usuario tiene acceso a ese proyecto
         if($proyecto->propietarioId !== $_SESSION['id']){
             header('Location: /dashboard');
