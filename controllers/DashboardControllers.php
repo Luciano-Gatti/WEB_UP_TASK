@@ -45,13 +45,17 @@ class DashboardControllers{
         
         //Verifica si hay una URL 
         $token = $_GET['url'];
-        if(!$token) header('Location: /dashboard');
+        if(!$token){
+            header('Location: /dashboard');
+        } 
 
         //Identifica el proyecto al que pertenece esa URL
         $proyecto = Proyecto::where('url', $token);
 
         //Verifica si el usuario tiene acceso a ese proyecto
-        if($proyecto->propietarioID !== $_SESSION['id']) header('Location: /dashboard');
+        if($proyecto->propietarioID !== $_SESSION['id']){
+            header('Location: /dashboard');
+        } 
 
         $titulo = $proyecto->nombre ?? '';//Guarda el nombre del proyecto
 

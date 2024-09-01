@@ -8,9 +8,13 @@ class TareaControllers{
     public static function index(){
         session_start();
         $proyectoURL = $_GET['url'];
-        if(!$proyectoURL) header('Location: /dashboard'); 
+        if(!$proyectoURL) {
+            header('Location: /dashboard');
+        } 
         $proyecto = Proyecto::where('url', $proyectoURL);
-        if(!$proyecto || $proyecto->propietarioID !== $_SESSION['id']) header('Location: /dashboard'); 
+        if(!$proyecto || $proyecto->propietarioID !== $_SESSION['id']){
+            header('Location: /dashboard');
+        }  
         $tareas = Tarea::belongsTo('proyectoID', $proyecto->id);
         echo json_encode(['tareas'=>$tareas]);
     }   
