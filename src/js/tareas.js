@@ -26,7 +26,7 @@
     async function obtenerTareas(){
         try {
             const serial = obtenerProyecto();
-            const url = `${window.location.origin}/api/tarea?url=${serial}`;
+            const url = `/api/tarea?url=${serial}`;
             const respuesta = await fetch(url);
             const resultado = await respuesta.json();
             tareas = resultado.tareas;
