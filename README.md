@@ -1,16 +1,16 @@
-# Salón de Peluquería - Sistema de Reservas
+# UpTask - Sistema de Gestión de Tareas
 
-Este proyecto es una página web diseñada para un salón de peluquería que permite a los clientes reservar citas en línea y a los administradores gestionar los servicios y las citas creadas.
+Este proyecto es una aplicación web diseñada para gestionar tareas de manera eficiente. Permite a los usuarios crear, organizar y filtrar tareas, brindando una herramienta simple pero poderosa para el control de proyectos.
 
 ## Características
 
-- **Reservas de Citas:** Los clientes pueden reservar citas en línea seleccionando el servicio deseado, la fecha y la hora conveniente.
-- **Administración de Servicios:** Los administradores pueden agregar, editar y eliminar servicios ofrecidos por el salón de peluquería.
-- **Administración de Citas:** Los administradores pueden ver todas las citas programadas, editar detalles y cancelar citas según sea necesario.
+- **Creación de Tareas:**  Los usuarios pueden crear nuevas tareas asignándoles un nombre y una prioridad.
+- **Gestión de Tareas:** Las tareas pueden ser completadas, eliminadas o filtradas por su estado (completas o pendientes).
+- **Organización por Proyectos:** Las tareas están organizadas por proyectos, lo que facilita la gestión de múltiples proyectos simultáneamente.
 
 ## Tecnologías Utilizadas
 
-- **Frontend:** HTML, SASS y JavaScript.
+- **Frontend:** HTAML, SASS y JavaScript.
 - **Backend:** PHP (usando un framework personalizado), patron de arquitectura MVC y patron de programación de Active Record.
 - **Base de Datos:** MySQL.
 
@@ -40,4 +40,4 @@ Si deseas contribuir a este proyecto, por favor sigue estos pasos:
 
 ## Créditos
 
-Este proyecto fue creado por [Luciano Emmanuel Gatti Flekenstein]. ¡Gracias a todos los contribuyentes!
+Este proyecto fue creado por [Luciano Emmanuel Gatti Flekenstein].
